@@ -1105,12 +1105,12 @@ class Image3DAlt extends PixpipeContainer{
   * @return {Object} Box of shape {min: {x:Number, y:Number, z:Number, t:Number}, max: {x:Number, y:Number, z:Number, t:Number} }
   */
   getTransfoBox( transformName ){
-    if( !this.hasTransform(space2voxelTransformName) ){
+    if( !this.hasTransform(transformName) ){
       console.warn(`The transform ${transformName} is not available.`); 
       return null;
     }
     
-    var corners = this.getTransfoVolumeCorners();
+    var corners = this.getTransfoVolumeCorners(transformName);
     var min = {
       x: +Infinity,
       y: +Infinity,
